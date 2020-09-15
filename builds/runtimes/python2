@@ -31,3 +31,7 @@ find "${OUT_PREFIX}" \( -type d -a \( -name test -o -name tests \) \) -exec rm -
 mkdir -p ${OUT_PREFIX}/include ${OUT_PREFIX}/lib/x86_64-linux-gnu
 cp /usr/include/sqlite3*.h ${OUT_PREFIX}/include
 ln -fs $(realpath /usr/lib/x86_64-linux-gnu/libsqlite3.so) ${OUT_PREFIX}/lib/x86_64-linux-gnu/libsqlite3.so
+
+# Create links to libxmlsec1 headers so Python can call them at runtime
+cp -r /usr/include/xmlsec1/xmlsec ${OUT_PREFIX}/include/
+ln -fs $(realpath /usr/lib/x86_64-linux-gnu/libxmlsec1*.so) ${OUT_PREFIX}/lib/x86_64-linux-gnu/
